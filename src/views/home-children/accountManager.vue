@@ -45,14 +45,14 @@
 
         <el-button type="primary" class="add-user">添加用户</el-button>
       </div>
-      <el-table :data="selectbox" style="width: 100%" border stripe>
+      <el-table :data="selectbox" style="width: 100%" border stripe v-loading="$store.state.isLoading">
         <el-table-column type="index" label="#"> </el-table-column>
-        <el-table-column prop="id" label="账号" width="180"> </el-table-column>
+        <el-table-column prop="id" label="账号" width="180" sortable> </el-table-column>
         <el-table-column prop="nickname" label="昵称" width="180">
         </el-table-column>
         <el-table-column prop="gender" label="性别" width="180">
         </el-table-column>
-        <el-table-column prop="borndate" label="出生日期" width="240">
+        <el-table-column prop="borndate" label="出生日期" width="240" sortable>
         </el-table-column>
         <el-table-column prop="selfdesc" label="个性说明"> </el-table-column>
         <el-table-column label="操作" width="150">

@@ -13,7 +13,8 @@
                     <input type="password" id="password" v-model="password">
                 </label>
             </div>
-            <div class="login-btn"><span @click="loginin">登陆</span></div>
+            <!-- <div class="login-btn"><span @click="loginin">登陆</span></div> -->
+            <div class="login-btn"><el-button type="primary" :loading="$store.state.isLoading" @click="loginin">登陆</el-button></div>
         </div>
     </div>
   </div>
@@ -25,7 +26,7 @@ export default {
     data(){
         return{
             name:'admin',
-            password:'admin'
+            password:'admin',
         }
     },
     methods:{
@@ -52,7 +53,8 @@ export default {
             }
         }
     },
-    
+    created(){
+    }
 };
 </script>
 
@@ -108,12 +110,13 @@ export default {
           }
           .login-btn{
               margin-top: 30px;
-              span{
+              .el-button{
                   padding: 8px 24px;
                   border: 2px solid #F0B7A5;
                   border-radius: 20px;
                   color: #F5E7B2;
                   font-weight: 600;
+                  background-color: rgba(0,0,0,0.1);
               }
           }
       }

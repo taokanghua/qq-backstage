@@ -14,7 +14,7 @@
     >
   </el-input>
 		</div>
-    <el-row :gutter="20" type="flex">
+    <el-row :gutter="20" type="flex" >
       <el-col :span="6" v-for="item in search(searchbox)" :key="item.uniq"
         ><el-card>
           <div class="dynamic-header">
@@ -69,7 +69,8 @@ export default {
 	data(){
 		return{
 			dynamicList:[],
-			searchbox:''
+      searchbox:'',
+      loading: null
 		}
 	},
 	methods:{
@@ -100,11 +101,27 @@ export default {
 					return true
 				}
 			})
-		}
+    },
+    openFullScreen(){ //全屏加载动画
+      this.loading = this.$loading({
+          lock:false,
+          text:'加载中...',
+          spinner:'el-icon-loading',
+          background: 'rgba(0, 0, 0, 0.7)'
+      })
+    }
 	},
 	created(){
-		this.getDynamicList()
-	},
+    this.getDynamicList()
+    this.openFullScreen()
+  },
+  watch:{
+    '$store.state.isLoading'(n){
+      if(!n){
+        this.loading.close()
+      }
+    }
+  },
 	components:{},
 	filters:{
 		timeF(n) {

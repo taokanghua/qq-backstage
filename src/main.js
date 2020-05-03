@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-
+import store from './store'
 // 导入全局样式
 import './style/common.less'
 // 导入接口
@@ -29,13 +29,18 @@ Vue.prototype.$qs = qs
 //全局请求拦截器
 Axios.interceptors.request.use(config => {
   config.headers.Authorization = sessionStorage.getItem('btoken')
+  vm.$store.commit('changeLoading') //改变加载图标为true
   return config
 })
-
+Axios.interceptors.response.use(config => {
+  vm.$store.commit('changeLoading') //改变加载图标为false
+  return config
+})
 
 Vue.config.productionTip = false
 
 let vm = new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')

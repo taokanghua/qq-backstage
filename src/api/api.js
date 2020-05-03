@@ -7,6 +7,11 @@ let ENV = {
     getpagination:'/getpagination', //获取分页
     getDynamic: '/getdynamic',
     ordinaryDelete: '/deletedynamic', // 按uniq来假删除
+    adminlist: '/adminlist',
+    admininfo: '/getadmininfo/',
+    editadmin:'/updateadmininfo',
+    changestatus:'/changestatus',
+    addadmin:'/addadmin',
 }
 
 export default ENV
