@@ -12,6 +12,7 @@ let ENV = {
     editadmin:'/updateadmininfo',
     changestatus:'/changestatus',
     addadmin:'/addadmin',
+    getNotify: '/getsysnotify',
 }
 
 export default ENV

@@ -16,6 +16,8 @@ Vue.use(ElementUI)
 import echarts from 'echarts'
 Vue.prototype.$echarts = echarts
 
+import './three/china.js'
+
 //导入axios
 import Axios from 'axios'
 Axios.defaults.baseURL = 'http://localhost:3002'

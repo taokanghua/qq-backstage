@@ -18,6 +18,16 @@ const HomeRouters = [
         path:'dynamicManager',
         name:'dynamicManager',
         component: () => import('@/views/home-children/dynamicManager')
+    },
+    {
+        path:'sysSetting',
+        name:'sysSetting',
+        component: () => import('@/views/home-children/sysSetting')
+    },
+    {
+        path:'mapChart',
+        name:'mapChart',
+        component: () => import('@/views/home-children/mapChart')
     }
 ]
 export default HomeRouters

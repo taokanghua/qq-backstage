@@ -25,11 +25,13 @@
           :collapse-transition="false"
           router
           @select="changeMenu"
+          unique-opened
         >
-          <div class="collapse" @click="isCollapse = !isCollapse">
+          <!-- 折叠菜单功能 有点bug 暂时取消 -->
+          <!-- <div class="collapse" @click="isCollapse = !isCollapse">
             <span></span><span></span><span></span>
-          </div>
-          <el-menu-item index="/home">
+          </div> -->
+          <el-menu-item index="/home/overview">
             <i class="el-icon-s-home"></i>
             <span slot="title">首页</span>
           </el-menu-item>
@@ -38,13 +40,13 @@
               <i class="el-icon-lock"></i>
               <span>账号管理</span>
             </template>
-			<el-menu-item index="/home/accountManager">
+            <el-menu-item index="/home/accountManager">
               <template slot="title">
                 <i class="el-icon-menu"></i>
                 <span>用户账号管理</span>
               </template>
             </el-menu-item>
-			<el-menu-item index="/home/adminAccountManager">
+            <el-menu-item index="/home/adminAccountManager">
               <template slot="title">
                 <i class="el-icon-menu"></i>
                 <span>管理员账号管理</span>
@@ -56,17 +58,29 @@
               <i class="el-icon-chat-line-round"></i>
               <span>系统通知设置</span>
             </template>
-            <el-menu-item index="1-1">选项1</el-menu-item>
-            <el-menu-item index="1-3">选项3</el-menu-item>
-            <el-menu-item index="1-4-1">选项1</el-menu-item>
+            <el-menu-item index="/home/sysSetting">
+            <template slot="title">
+                <i class="el-icon-menu"></i>
+                <span>通知/密保问题</span>
+              </template>
+            </el-menu-item>
           </el-submenu>
           <el-submenu index="dynamicManager">
             <template slot="title">
               <i class="el-icon-date"></i>
               <span>动态管理</span>
             </template>
-            <el-menu-item index="/home/dynamicManager">用户动态管理</el-menu-item>
+            <el-menu-item index="/home/dynamicManager">
+            <template slot="title">
+                <i class="el-icon-menu"></i>
+                <span>用户动态管理</span>
+              </template>
+            </el-menu-item>
           </el-submenu>
+          <el-menu-item index="/home/mapChart">
+            <i class="el-icon-s-data"></i>
+            <span slot="title">用户地图分布</span>
+          </el-menu-item>
         </el-menu>
       </div>
       <div class="home-right">
@@ -81,9 +95,9 @@ export default {
   data() {
     return {
       isCollapse: false,
-	  activeMenu: "/home",
-	  avatar:'',
-	  userid:''
+      activeMenu: "/home/overview",
+      avatar: "",
+      userid: "",
     };
   },
   methods: {
@@ -99,12 +113,12 @@ export default {
       this.changeMenu();
     },
   },
-  created(){
-	  // 获取用户信息
-	let info = JSON.parse(sessionStorage.getItem('info'))
-	this.avatar = info.avatar
-	this.userid = info.id
-  }
+  created() {
+    // 获取用户信息
+    let info = JSON.parse(sessionStorage.getItem("info"));
+    this.avatar = info.avatar;
+    this.userid = info.id;
+  },
 };
 </script>
 
